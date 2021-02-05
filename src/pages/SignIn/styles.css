@@ -1,0 +1,189 @@
+#login-page {
+  height: 100vh;
+
+  display: flex;
+
+}
+
+
+#login-page .proffy-container {
+  width: 816px;
+  background: #8257E5;
+}
+
+#login-page .proffy-container .back-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 90px;
+  width: 600px;
+  height: 700px;
+  background: url('../../assets/images/background-rotate.svg') no-repeat;
+}
+
+#login-page .proffy-container .back-img img {
+  width: 400px;
+  height: 94px;
+}
+#login-page .proffy-container .back-img p {
+  color: #D4C2FF;
+  font-size: 2.4rem;
+  max-width: 320px;
+}
+
+#login-page main {
+  width: 720px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-page main form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#login-page main form h1 {
+  font-size: 36px;
+  color: #32264D;
+  font-weight: 600;
+
+  margin-bottom: 30px;
+}
+
+::-webkit-input-placeholder {
+  color: #9C98A6;
+}
+
+ svg{
+  cursor: pointer;
+}
+
+#login-page form #checkmark {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: #F5F8FA;
+  border: 1px solid #E6E6F0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+}
+
+#login-page form #check:checked ~ #checkmark {
+  background-color: #37C77F;
+  border: 2px solid #37C77F;
+}
+
+#login-page form #checkmark::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  border-right: 4px solid #fff;
+  border-bottom: 4px solid #fff;
+  border-radius: 1.5px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotateZ(80deg) scale(10);
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+
+#login-page form #check:checked ~ #checkmark::after {
+  opacity: 1;
+  transform: translate(-50%,-50%) rotateZ(40deg) scale(1);
+}
+
+#login-page form .check-container {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#login-page form .check-container .label-remember {
+  font-size: 14px;
+  margin-right: 60px;
+  color: #9C98A6;
+}
+
+#login-page form .check-container .forgot-password {
+  font-size: 14px;
+  text-decoration: none;
+  color: #8FA7B3;
+  color: #9C98A6;
+  transition: color 0.2s;
+}
+
+#login-page form .check-container .forgot-password:hover {
+  color: #6A6180;
+}
+
+#login-page form button {
+
+  width: 352px;
+  height: 56px;
+  color: #9C98A6;
+  cursor: pointer;
+  font-weight: 600;
+
+  margin-top: 56px;
+  background: #DCDCE6;
+  border-radius: 8px;
+
+}
+
+#login-page .footer {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 50%;
+}
+
+#login-page .footer p {
+  position: absolute;
+  bottom: 0;
+
+  margin-bottom: 42px;
+  color: #6A6180;
+  font-size: 16px;
+  max-width: 140px;
+}
+
+#login-page .footer p a {
+  color: #8257E5;
+  font-weight: 600;
+}
+
+#login-page .footer span {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 280px;
+  margin-bottom: 60px;
+  bottom: 0;
+  font-size: 12px;
+  color: #9C98A6;
+}
+
+#login-page .footer span img {
+  margin-left: 6px;
+}
+
+/* @media(max-width: 700px) {
+  .proffy-container .back-img p {
+
+  }
+} */

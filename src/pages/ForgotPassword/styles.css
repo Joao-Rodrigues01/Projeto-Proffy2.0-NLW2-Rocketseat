@@ -1,0 +1,91 @@
+#forgot-password{
+  height: 100vh;
+  display: flex;
+}
+.proffy-container {
+
+  width: 816px;
+  background: #8257E5;
+}
+
+.proffy-container .back-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 90px;
+  width: 600px;
+  height: 700px;
+  background: url('../../assets/images/background-rotate.svg') no-repeat;
+}
+
+.proffy-container .back-img img {
+  width: 400px;
+  height: 94px;
+}
+.proffy-container .back-img p {
+  color: #D4C2FF;
+  font-size: 2.4rem;
+  max-width: 320px;
+}
+
+
+main {
+  position: relative;
+  width: 720px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main a img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 190px;
+  margin-top: 10px;
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#forgot-password main form .input-email {
+  width: 352px;
+  height: 72px;
+  background: #FAFAFC;
+  border: 1px solid #E6E6F0;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#forgot-password form h1 {
+  font-size: 36px;
+  color: #32264D;
+  font-weight: 600;
+  max-width: 260px;
+
+  margin-bottom: 10px;
+}
+
+#forgot-password  form p {
+  color: #6A6180;
+  font-size: 16px;
+  max-width: 340px;
+  margin-bottom: 40px;
+}
+#forgot-password main form button {
+  margin-top: 24px;
+}
+
+#forgot-password main form .input-email {
+  border-radius: 8px;
+}
+
+

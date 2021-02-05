@@ -1,0 +1,108 @@
+#signup-page{
+  height: 754px;
+  display: flex;
+}
+
+
+#signup-page .proffy-container {
+  width: 816px;
+  background: #8257E5;
+}
+
+#signup-page .proffy-container .back-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 90px;
+  width: 600px;
+  height: 700px;
+  background: url('../../assets/images/background-rotate.svg') no-repeat;
+}
+
+#signup-page .proffy-container .back-img img {
+  width: 400px;
+  height: 94px;
+}
+#signup-page .proffy-container .back-img p {
+  color: #D4C2FF;
+  font-size: 2.4rem;
+  max-width: 320px;
+}
+
+
+main {
+  position: relative;
+  width: 720px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+main a img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 190px;
+  margin-top: 10px;
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+#signup-page main form h1 {
+  font-size: 36px;
+  color: #32264D;
+  font-weight: 600;
+
+  margin-bottom: 10px;
+}
+
+main form p {
+  color: #6A6180;
+  font-size: 16px;
+  max-width: 220px;
+  margin-bottom: 21px;
+}
+
+
+
+::-webkit-input-placeholder {
+  color: #9C98A6;
+}
+
+
+ svg{
+  cursor: pointer;
+}
+
+form button {
+  width: 352px;
+  height: 56px;
+  color: #ffff;
+  cursor: pointer;
+
+  margin-top: 56px;
+  background: #04D361;
+  border-radius: 8px;
+
+}
+
+form button:hover {
+  background: #07ca5f;
+}
+
+
+
+
+/* @media(max-width: 700px) {
+  .proffy-container .back-img p {
+
+  }
+} */
