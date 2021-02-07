@@ -3,18 +3,18 @@
     height: 100vh;
 }
 
-.page-header {
+#page-teacher-list .page-header {
     display: flex;
     flex-direction: column;
     background-color: var(--color-primary) ;
 }
 
 
-.page-header .top-bar-container {
-    width: 90%;
+#page-teacher-list .page-header .top-bar-container {
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     color: var(--color-text-in-primary);
     padding: 1.6rem 0;
@@ -38,7 +38,7 @@
     width: 90%;
     margin:0 auto;
     position: relative;
-    margin: 3.2rem auto;
+    margin: 6rem auto;
 }
 
 .page-header .header-content strong {
@@ -75,6 +75,8 @@
     outline: none;
 }
 
+
+
 #search-teachers button:hover{
     background: var(--color-secundary-dark);
 }
@@ -99,7 +101,7 @@
         grid-template-columns: repeat(4, 1fr);
         column-gap: 16px;
         position: absolute;
-        bottom: -54px;
+        bottom: -86px;
     }
 
     #search-teachers .input-block + .input-block,

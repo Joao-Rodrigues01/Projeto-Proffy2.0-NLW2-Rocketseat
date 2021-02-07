@@ -1,13 +1,16 @@
 import React, { useState, FormEvent } from 'react';
+import { Form } from '@unform/web';
 
 import PageHeader from '../../components/PageHeader';
 
 import Input from '../../components/Inputs';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
+import smileIcon from '../../assets/images/icons/smile.svg';
 import Select from '../../components/Select';
 import api from '../../services/api';
 
 import './styles.css';
+import InputLabel from '../../components/InputLabel';
 
 const TeacherList: React.FC = () => {
   const [teachers, setTeachers] = useState([]);
@@ -32,9 +35,17 @@ const TeacherList: React.FC = () => {
 
   return (
     <div id="page-teacher-list" className="container">
-      <PageHeader title="Estes são os proffys disponíveis.">
-        <form action="" id="search-teachers" onSubmit={searchTeachers}>
+      <PageHeader
+        title="Estes são os proffys disponíveis."
+        headerTitle="Estudar"
+        imgIcon={smileIcon}
+        imgIconDesc="Nós temos 23 professores."
+        style={{margin: '0'}}
+      >
+        <Form  id="search-teachers" onSubmit={searchTeachers}>
           <Select
+            title="Selecione"
+            style={{width: '231px'}}
             name="subject"
             label="Matéria"
             value={subject}
@@ -57,6 +68,8 @@ const TeacherList: React.FC = () => {
           />
 
           <Select
+            title="Selecione"
+            style={{width: '231px'}}
             name="week_day"
             label="Dia da semana"
             value={week_day}
@@ -73,18 +86,26 @@ const TeacherList: React.FC = () => {
               { value: '6', label: 'Sábado' },
             ]}
           />
-          <Input
-            type="time"
-            name="time"
-            label="Hora"
-            value={time}
-            onChange={(e) => {
-              setTime(e.target.value);
-            }}
-          />
 
-          <button type="submit">Filtrar</button>
-        </form>
+          <InputLabel name="time" title="Horário" style={{margin: '0'}}>
+            <Input
+              style={
+                {
+                  width: '242px',
+                  height: '56px',
+                  borderRadius: '8px',
+                  padding: '0 30px',
+                }
+              }
+              type="time"
+              name="time"
+              value={time}
+              onChange={(e) => {
+                setTime(e.target.value);
+              }}
+              />
+          </InputLabel>
+        </Form>
       </PageHeader>
 
       <main>

@@ -1,0 +1,10 @@
+#input-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 80px;
+}
+
+#input-label label {
+  margin-bottom: 8px;
+}

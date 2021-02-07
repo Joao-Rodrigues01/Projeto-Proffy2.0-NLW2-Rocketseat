@@ -1,10 +1,13 @@
 import React, { useState, FormEvent } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Form } from '@unform/web';
 
 import PageHeader from '../../components/PageHeader';
 import Input from '../../components/Inputs';
+import InputLabel from '../../components/InputLabel';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
+import rocketIcon from '../../assets/images/icons/rocket.svg';
 import Select from '../../components/Select';
 import Textarea from '../../components/Textarea';
 import api from '../../services/api';
@@ -71,40 +74,39 @@ const TeacherForm: React.FC = () => {
     <div id="page-teacher-form" className="container">
       <PageHeader
         title="Que incrível que você quer dar aulas."
-        description="O primeiro passo é preencher esse formulário de inscrição"
+        description="O primeiro passo é preencher esse formulário de inscrição."
+        headerTitle="Dar aulas"
+        imgIcon={rocketIcon}
+        imgIconDesc="Prepare-se! vai ser o máximo."
       />
 
       <main>
-        <form onSubmit={handleCreateClass}>
+        <Form onSubmit={handleCreateClass}>
           <fieldset>
             <legend>Seus dados</legend>
-            <Input
-              name="name"
-              label="Nome completo"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <Input
-              name="avatar"
-              label="Avatar"
-              value={avatar}
-              onChange={(e) => {
-                setAvatar(e.target.value);
-              }}
-            />
-            <Input
-              name="whatsapp"
-              label="Whatsapp"
-              value={whatsapp}
-              onChange={(e) => {
-                setWhatsapp(e.target.value);
-              }}
-            />
+
+            <div className="user-info">
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png" />
+              <p>Tiago Luchenberg</p>
+
+
+                <InputLabel title="Whatsapp" name="whatsapp">
+                  <input
+                    style={{width: '224px'}}
+                    name="whatsapp"
+                    placeholder="(   ) _ ____ ____"
+                    value={whatsapp}
+                    onChange={(e) => {
+                      setWhatsapp(e.target.value);
+                    }}
+                    />
+                </InputLabel>
+            </div>
+
+
             <Textarea
               name="bio"
-              label="Biografia"
+              label="Biografia (Máximo 300 caracteres)"
               value={bio}
               onChange={(e) => {
                 setBio(e.target.value);
@@ -112,10 +114,12 @@ const TeacherForm: React.FC = () => {
             />
           </fieldset>
 
-          <fieldset>
+          <fieldset id="class-field">
             <legend>Sobre a aula</legend>
 
             <Select
+              title="Selecione qual você quer ensinar"
+              style={{width: '383px'}}
               name="subject"
               label="Matéria"
               value={subject}
@@ -136,18 +140,20 @@ const TeacherForm: React.FC = () => {
                 { value: 'Inglês', label: 'Inglês' },
               ]}
             />
-
-            <Input
-              name="cost"
-              label="Custo da sua hora por aula"
-              value={cost}
-              onChange={(e) => {
-                setCost(e.target.value);
-              }}
-            />
+              <InputLabel title="Custo da sua hora / aula" name="cost">
+                  <input
+                    style={{width: '192px'}}
+                    name="cost"
+                    placeholder="R$"
+                    value={cost}
+                    onChange={(e) => {
+                      setCost(e.target.value);
+                    }}
+                    />
+              </InputLabel>
           </fieldset>
 
-          <fieldset>
+          <fieldset >
             <legend>
               Horários disponíveis
               <button type="button" onClick={addNewScheduleItem}>
@@ -158,7 +164,10 @@ const TeacherForm: React.FC = () => {
             {scheduleItems.map((scheduleItem, index) => {
               return (
                 <div key={scheduleItem.week_day} className="schedule-item">
+                 <div className="horarios">
                   <Select
+
+                    style={{width: '320px'}}
                     name="week_day"
                     label="Dia da semana"
                     value={scheduleItem.week_day}
@@ -176,25 +185,31 @@ const TeacherForm: React.FC = () => {
                     ]}
                   />
 
-                  <Input
+                <InputLabel title="Das" name="from" style={{marginLeft: '0'}}>
+                  <input
+                    style={{width: '128px'}}
                     name="from"
-                    label="Das"
                     type="time"
                     value={scheduleItem.from}
                     onChange={(e) =>
                       setScheduleItemValue(index, 'from', e.target.value)
                     }
-                  />
-                  <Input
-                    name="to"
-                    label="Até"
-                    type="time"
-                    value={scheduleItem.to}
-                    onChange={(e) =>
-                      setScheduleItemValue(index, 'to', e.target.value)
-                    }
-                  />
+                    />
+                </InputLabel>
+
+                  <InputLabel title="Até" name="to" style={{marginLeft: '0'}}>
+                    <input
+                      style={{width: '128px'}}
+                      name="to"
+                      type="time"
+                      value={scheduleItem.to}
+                      onChange={(e) =>
+                        setScheduleItemValue(index, 'to', e.target.value)
+                      }
+                      />
+                  </InputLabel>
                 </div>
+              </div>
               );
             })}
           </fieldset>
@@ -202,13 +217,13 @@ const TeacherForm: React.FC = () => {
           <footer>
             <p>
               <img src={warningIcon} alt="Aviso importante" />
-              Importante!
+                Importante!
               <br />
-              Preencha todos os dados
+              Preencha todos os dados corretamente
             </p>
             <button type="submit">Salvar cadastro</button>
           </footer>
-        </form>
+        </Form>
       </main>
     </div>
   );

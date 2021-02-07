@@ -13,7 +13,7 @@
     width: 100%;
     max-width: 74rem;
     border-radius: 0.8rem;
-    margin: -3.4rem auto -3.4rem;
+    margin: -6rem auto -6rem;
     padding-top: 6.4rem;
     overflow: hidden;
 }
@@ -21,19 +21,25 @@
 #page-teacher-form main fieldset {
     border: 0;
     padding: 0 2.4rem;
+
 }
 
-#page-teacher-form main fieldset + fieldset {
-    margin-top: 6.4rem;
-}
-
-#page-teacher-form main fieldset legend {
-    font: 700 2.4rem Archivo;
-    color: var(--color-text-title);
-    margin-bottom: 2.4rem;
+#class-field{
+    margin-top: 5rem;
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
+}
+
+
+#page-teacher-form main fieldset legend {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    font: 600 2.4rem Archivo;
+    color: var(--color-text-title);
+    margin-bottom: 3.4rem;
     width: 100%;
     padding-bottom: 1.6rem;
     border-bottom: 1px solid var(--color-line-in-white);
@@ -49,17 +55,57 @@
 }
 #page-teacher-form main fieldset legend button:hover {
     color: var(--color-primary-darker);
-    
-}
 
+}
 #page-teacher-form main fieldset .input-block + .textarea-block,
 #page-teacher-form main fieldset .select-block + .input-block {
-    
     margin-top: 2.4rem;
 }
 
 #page-teacher-form main fieldset label {
+  font-size: 14px;
     color: var(--color-text-complement  );
+}
+
+
+#page-teacher-form main fieldset  input {
+  padding-left: 20px;
+  width: 224px;
+  height: 56px;
+  border-radius: 8px;
+  border: 1px solid #E6E6F0;
+}
+
+#page-teacher-form main fieldset .user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#page-teacher-form main fieldset .user-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+#page-teacher-form main fieldset .user-info p {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Archivo;
+  color: #32264D;
+  margin: 20px;
+}
+
+#page-teacher-form main fieldset .user-info .input-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 80px;
+}
+
+
+
+#page-teacher-form main fieldset .user-info label {
+  margin-bottom: 8px;
 }
 
 #page-teacher-form main footer {
@@ -75,7 +121,7 @@
     justify-content: center;
     font-size: 1.4rem;
     line-height: 2.4rem;
-    color: var(--color-text-complement);    
+    color: var(--color-text-complement);
 }
 
 
@@ -104,38 +150,31 @@
     background: var(--color-secundary-dark);
 }
 
+.horarios {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 @media (min-width:700px) {
     #page-teacher-form {
         max-width: 100vw;
     }
-
-    #page-teacher-form .page-header .header-content {
-        margin-bottom: 0;
-    }
-
     #page-teacher-form main fieldset {
         padding: 0 6.4rem;
     }
 
-    #page-teacher-form main .schedule-item {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        column-gap: 1.6rem;
-    }
-    #page-teacher-form main .schedule-item .input-block {
-        margin-top: 0 !important;
-    }
 
     #page-teacher-form main footer {
         padding: 3.0rem 6.4rem;
-        margin-bottom: 6rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    
+
     #page-teacher-form main footer p {
         justify-content: space-between;
+        max-width: 340px;
     }
 
     #page-teacher-form main footer button {

@@ -40,7 +40,7 @@ main {
   justify-content: center;
 }
 
-main a img {
+#forgot-password  main a img {
   position: absolute;
   top: 0;
   left: 0;
@@ -82,6 +82,14 @@ main form {
 }
 #forgot-password main form button {
   margin-top: 24px;
+  font-weight: 600;
+  width: 352px;
+  height: 56px;
+  background: #DCDCE6;
+  border-radius: 8px;
+  color: #9C98A6;
+
+  cursor: pointer;
 }
 
 #forgot-password main form .input-email {

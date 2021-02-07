@@ -1,4 +1,4 @@
- .input-block {
+ .input {
   width: 352px;
   height: 72px;
   background: #FAFAFC;
@@ -9,11 +9,11 @@
   justify-content: center;
 }
 
- .input-block label {
+ .input label {
     font-size: 1.4rem;
 }
 
- .input-block input {
+ .input input {
     width: 304px;
     color: #6A6180;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Landing from './pages/Landing';
+import Dashboard from './pages/Dashboard';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
@@ -14,7 +14,7 @@ const Routes: React.FC = () => {
       <Route path="/" exact component={SignIn} />
       <Route path="/signup" exact component={SignUp} />
       <Route path="/forgot-password" exact component={ForgotPassword} />
-      <Route path="/dashboard" exact component={Landing} />
+      <Route path="/dashboard" exact component={Dashboard} />
       <Route path="/study" component={TeacherList} />
       <Route path="/give-classes" component={TeacherForm} />
     </BrowserRouter>

@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = ({ label, name, click ,icon: Icon, style, ..
 
 
   return (
-    <div className="input-block" style={style}>
+    <div className="input" style={style}>
       { label && <label htmlFor={name}>{label}</label>}
 
       {
