@@ -12,7 +12,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   style?: object;
 }
 
-const Input: React.FC<InputProps> = ({ label, name, click ,icon: Icon, style, ...rest}) => {
+const Input: React.FC<InputProps> = ({
+  label,
+  name,
+  click ,
+  icon: Icon,
+  style,
+  ...rest
+}) => {
   const inputRef = useRef(null);
   const { fieldName, defaultValue, error, registerField } = useField(name);
 

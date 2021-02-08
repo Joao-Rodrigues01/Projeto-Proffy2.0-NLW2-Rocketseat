@@ -11,9 +11,11 @@ import PurpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 import api from '../../services/api';
 
 import './styles.css';
+import { useAuth } from '../../hooks/AuthContext';
 
 const Dashboard: React.FC = () => {
   const [totalConnections, setTotalConnections] = useState(0);
+  const { signOut } = useAuth();
 
   useEffect(() => {
     api.get('connections').then((response: any) => {
@@ -34,7 +36,9 @@ const Dashboard: React.FC = () => {
                   Thiago Luchenberg
                 </div>
 
-                <button type="button"><FiPower color="#D4C2FF" size={24}/></button>
+                <button type="button" onClick={signOut}>
+                  <FiPower color="#D4C2FF" size={24}/>
+                </button>
               </header>
 
               <div id="page-landing-content" className="container">

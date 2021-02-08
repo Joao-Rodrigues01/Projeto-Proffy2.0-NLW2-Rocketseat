@@ -2,16 +2,18 @@ import React, { useRef, useCallback, useState } from 'react';
 import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import * as Yup from 'yup';
 import logoImg from '../../assets/images/logo.svg';
 import getValidationErrors from '../../utils/getValidationErrors';
 
+
 import PurpleHeartIcon from '../../assets/images/icons/purple-heart.svg';
 
 import Input from '../../components/Inputs';
 import './styles.css';
+import { useAuth }  from '../../hooks/AuthContext';
 
 
 interface SignUpData {
@@ -23,7 +25,11 @@ interface SignUpData {
 
 const SignIn: React.FC = () => {
   const [isPassword, setIsPassword] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const formRef = useRef<FormHandles>(null);
+
+  const { signIn, signInChecked} = useAuth();
+
 
   const handleSubmit = useCallback(async (data: SignUpData) => {
     try {
@@ -37,7 +43,18 @@ const SignIn: React.FC = () => {
             abortEarly: false,
           });
 
-          console.log(data);
+
+          if (isChecked) {
+              signInChecked({
+              email: data.email,
+              password: data.password,
+            });
+          } else {
+            signIn({
+              email: data.email,
+              password: data.password,
+            });
+          }
 
         } catch (err) {
           if (err instanceof Yup.ValidationError) {
@@ -49,11 +66,17 @@ const SignIn: React.FC = () => {
             return;
           }
         }
-  }, []);
+  }, [signIn, isChecked]);
 
   const handlePassword = useCallback(() => {
     setIsPassword(!isPassword);
   }, [isPassword]);
+
+
+  const handleCheck = useCallback(() => {
+    setIsChecked(!isChecked);
+  }, [isChecked]);
+
 
   return (
     <div id="login-page">
@@ -90,6 +113,9 @@ const SignIn: React.FC = () => {
                     name="check"
                     id="check"
                     className="checkmark"
+                    checked={isChecked}
+                    onChange={handleCheck}
+                    onClick={handleCheck}
                     hidden
                   />
 
