@@ -42,7 +42,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         </div>
 
         <div className="icon-content" style={style}>
-          <img src={imgIcon} />
+          <img src={imgIcon} alt="Icone"/>
           <p>{imgIconDesc}</p>
         </div>
       </div>

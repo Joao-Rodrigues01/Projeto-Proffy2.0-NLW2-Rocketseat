@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useState } from 'react';
 import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import * as Yup from 'yup';
 import logoImg from '../../assets/images/logo.svg';
@@ -66,7 +66,7 @@ const SignIn: React.FC = () => {
             return;
           }
         }
-  }, [signIn, isChecked]);
+  }, [signIn, isChecked, signInChecked]);
 
   const handlePassword = useCallback(() => {
     setIsPassword(!isPassword);

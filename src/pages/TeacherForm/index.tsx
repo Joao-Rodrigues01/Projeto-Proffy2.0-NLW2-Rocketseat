@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { Form } from '@unform/web';
 
 import PageHeader from '../../components/PageHeader';
-import Input from '../../components/Inputs';
 import InputLabel from '../../components/InputLabel';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
@@ -86,7 +85,9 @@ const TeacherForm: React.FC = () => {
             <legend>Seus dados</legend>
 
             <div className="user-info">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png" />
+              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png"
+                  alt="Yoda"
+                />
               <p>Tiago Luchenberg</p>
 
 
