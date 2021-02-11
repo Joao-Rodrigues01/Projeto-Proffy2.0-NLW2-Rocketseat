@@ -1,5 +1,6 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent, useRef, useCallback } from 'react';
 import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
 import PageHeader from '../../components/PageHeader';
 
@@ -14,24 +15,24 @@ import InputLabel from '../../components/InputLabel';
 
 const TeacherList: React.FC = () => {
   const [teachers, setTeachers] = useState([]);
+  const formRef = useRef<FormHandles>(null);
 
   const [subject, setSubject] = useState('');
   const [week_day, setWeekDay] = useState('');
   const [time, setTime] = useState('');
 
-  async function searchTeachers(e: FormEvent) {
-    e.preventDefault();
+const searchTeachers = useCallback(async (data: FormEvent) => {
 
-    const response = await api.get('classes', {
-      params: {
-        subject,
-        week_day,
-        time,
-      },
-    });
+  const response = await api.get('classes', {
+    params: {
+      subject,
+      week_day,
+      time,
+    },
+  });
 
-    setTeachers(response.data);
-  }
+  setTeachers(response.data);
+} , [subject, week_day, time]);
 
   return (
     <div id="page-teacher-list" className="container">
@@ -42,7 +43,7 @@ const TeacherList: React.FC = () => {
         imgIconDesc="Nós temos 23 professores."
         style={{margin: '0'}}
       >
-        <Form  id="search-teachers" onSubmit={searchTeachers}>
+        <Form  ref={formRef} id="search-teachers" onSubmit={searchTeachers}>
           <Select
             title="Selecione"
             style={{width: '231px'}}
@@ -105,6 +106,8 @@ const TeacherList: React.FC = () => {
               }}
               />
           </InputLabel>
+
+          <button type="submit">Vai</button>
         </Form>
       </PageHeader>
 

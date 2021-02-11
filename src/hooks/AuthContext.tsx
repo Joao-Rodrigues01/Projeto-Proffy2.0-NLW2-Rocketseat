@@ -3,9 +3,17 @@ import { createContext } from 'react';
 import api from '../services/api';
 
 
+interface User {
+  id: string;
+  name: string;
+  surname: string;
+  email: string;
+  avatar: string;
+}
+
 interface AuthState {
   token: string;
-  user: object;
+  user: User;
 }
 
 interface SignInCredentials {
@@ -14,7 +22,7 @@ interface SignInCredentials {
 }
 
 interface AuthContextData {
-  user: object;
+  user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signInChecked(credentials: SignInCredentials): Promise<void>;
   signOut(): void;

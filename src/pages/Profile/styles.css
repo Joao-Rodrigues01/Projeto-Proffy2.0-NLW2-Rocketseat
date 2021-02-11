@@ -1,0 +1,271 @@
+#page-profile {
+  width: 100vw;
+  height: 100vh;
+}
+
+#page-profile .page-header .header-content {
+  margin-bottom: 6.4rem;
+  height: 0;
+}
+
+#page-profile .profile-img {
+  background: url('../../assets/images/profile-back.svg') no-repeat;
+  width: 1200px;
+  height: 390px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin-bottom: 24px;
+}
+
+#page-profile .profile-img img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 26px;
+}
+
+#page-profile .profile-img .cam-icon {
+  position: absolute;
+  right: 40%;
+  bottom: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  background: #04d361;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+#page-profile .profile-img h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+#page-profile .profile-img p {
+  margin: 0;
+  font-size: 20px;
+}
+
+#page-profile main {
+  background: var(--color-box-base);
+  width: 100%;
+  max-width: 74rem;
+  border-radius: 0.8rem;
+  margin: -6rem auto -6rem;
+  padding-top: 6.4rem;
+  overflow: hidden;
+}
+
+#page-profile main fieldset {
+  border: 0;
+  padding: 0 2.4rem;
+}
+
+#class-field{
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+#page-profile main fieldset legend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 600 2.4rem Archivo;
+  color: var(--color-text-title);
+  margin-bottom: 3.4rem;
+  width: 100%;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid var(--color-line-in-white);
+}
+
+
+#page-profile main fieldset legend button {
+  background: none;
+  border: 0;
+  color: var(--color-primary);
+  font: 700 1.6rem Archivo;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+#page-profile main fieldset legend button:hover {
+  color: var(--color-primary-darker);
+
+}
+#page-profile main fieldset .input-block + .textarea-block,
+#page-profile main fieldset .select-block + .input-block {
+  margin-top: 2.4rem;
+}
+
+#page-profile main fieldset label {
+font-size: 14px;
+  color: var(--color-text-complement  );
+}
+
+
+#page-profile main fieldset  input {
+padding-left: 20px;
+width: 224px;
+height: 56px;
+border-radius: 8px;
+border: 1px solid #E6E6F0;
+}
+
+#page-profile main fieldset .user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+#page-profile main fieldset .user-info #input-label {
+  margin: 0;
+}
+
+#page-profile main fieldset .user-info img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+#page-profile main fieldset .user-info p {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Archivo;
+  color: #32264D;
+  margin: 20px;
+}
+
+#page-profile main fieldset .user-info .input-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 80px;
+}
+
+
+#page-profile main fieldset .user-info label {
+  margin-bottom: 8px;
+}
+
+
+#page-profile .schedule-item {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+#page-profile .schedule-item .horarios {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #E6E6F0;
+}
+
+#page-profile .schedule-item button {
+  position: absolute;
+  padding: 0 20px;
+
+  top: 90%;
+  left: 40%;
+
+  color: #E33D3D;
+  font-family: Archivo;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+}
+
+
+
+#page-profile main footer {
+  padding: 4rem 2.4rem;
+  background: var(--color-box-footer);
+  border-top: 1px solid var(--color-line-in-white);
+  margin-top: 3.4rem;
+}
+
+#page-profile main footer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--color-text-complement);
+}
+
+
+#page-profile main footer p img {
+  margin-right: 2rem;
+}
+
+#page-profile main footer button {
+  width: 100%;
+  height: 5.6rem;
+  background: var(--color-secundary);
+  color: var(--color-button-text);
+  border: 0;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font: 700 1.6rem Archivo;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  margin-top: 3.2rem;
+}
+
+#page-profile main footer button:hover{
+  background: var(--color-secundary-dark);
+}
+
+.horarios {
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+}
+
+@media (min-width:700px) {
+  #page-profile {
+      max-width: 100vw;
+  }
+
+  #page-profile .page-header {
+    height: 500px;
+}
+
+  #page-profile main fieldset {
+      padding: 0 6.4rem;
+  }
+
+
+  #page-profile main footer {
+      padding: 3.0rem 6.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  #page-profile main footer p {
+      justify-content: space-between;
+      max-width: 340px;
+  }
+
+  #page-profile main footer button {
+      width: 20rem;
+      margin-top: 0;
+  }
+}

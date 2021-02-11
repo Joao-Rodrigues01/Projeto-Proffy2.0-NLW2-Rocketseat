@@ -1,5 +1,6 @@
 import React, { useState, FormEvent, useCallback, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FiCamera } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import { useAuth } from '../../hooks/AuthContext';
@@ -8,14 +9,13 @@ import PageHeader from '../../components/PageHeader';
 import InputLabel from '../../components/InputLabel';
 
 import warningIcon from '../../assets/images/icons/warning.svg';
-import rocketIcon from '../../assets/images/icons/rocket.svg';
 import Select from '../../components/Select';
 import Textarea from '../../components/Textarea';
 import api from '../../services/api';
 
 import './styles.css';
 
-const TeacherForm: React.FC = () => {
+const Profile: React.FC = () => {
   const history = useHistory();
   const { user } = useAuth();
   const formRef = useRef<FormHandles>(null);
@@ -72,14 +72,21 @@ const TeacherForm: React.FC = () => {
 
 
   return (
-    <div id="page-teacher-form" className="container">
-      <PageHeader
-        title="Que incrível que você quer dar aulas."
-        description="O primeiro passo é preencher esse formulário de inscrição."
-        headerTitle="Dar aulas"
-        imgIcon={rocketIcon}
-        imgIconDesc="Prepare-se! vai ser o máximo."
-      />
+    <div id="page-profile" className="container">
+      <PageHeader headerTitle="Meu perfil">
+          <header>
+            <div className="profile-img">
+                <img src="https://avatars.githubusercontent.com/u/61169118?s=460&u=8433bc8b05b820853155e079fdcdaae69000a878&v=4"
+                    alt="João"
+                />
+                  <div className="cam-icon">
+                    <FiCamera size={24} color="#fff" />
+                  </div>
+                <h1>João Rodrigues</h1>
+                <p>Matemática</p>
+              </div>
+          </header>
+      </PageHeader>
 
       <main>
         <Form  ref={formRef} onSubmit={handleCreateClass}>
@@ -87,26 +94,60 @@ const TeacherForm: React.FC = () => {
             <legend>Seus dados</legend>
 
             <div className="user-info">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png"
-                  alt="Yoda"
-                />
-              <p>Tiago Luchenberg</p>
 
-
-                <InputLabel title="Whatsapp" name="whatsapp">
+               <InputLabel title="Nome" name="name">
                   <input
-                    style={{width: '224px'}}
-                    name="whatsapp"
-                    placeholder="(   ) _ ____ ____"
+                    style={{width: '288px'}}
+                    name="name"
+                    placeholder="Jonas"
                     value={whatsapp}
                     onChange={(e) => {
                     setWhatsapp(e.target.value);
                     }}
                     />
                 </InputLabel>
+
+
+                <InputLabel title="Sobrenome" name="surname">
+                  <input
+                    style={{width: '288px'}}
+                    name="surname"
+                    placeholder="Rodrigues"
+                    value={whatsapp}
+                    onChange={(e) => {
+                    setWhatsapp(e.target.value);
+                    }}
+                    />
+                </InputLabel>
+
             </div>
 
+            <div className="user-info">
+                  <InputLabel title="E-mail" name="email">
+                    <input
+                      style={{width: '364px'}}
+                      name="email"
+                      placeholder="jonas.victir@gmail.com"
+                      value={whatsapp}
+                      onChange={(e) => {
+                      setWhatsapp(e.target.value);
+                      }}
+                      />
+                  </InputLabel>
 
+
+                  <InputLabel title="Whatsapp" name="whatsapp">
+                    <input
+                      style={{width: '186px'}}
+                      name="whatsapp"
+                      placeholder="(   ) _ ____ ____"
+                      value={whatsapp}
+                      onChange={(e) => {
+                      setWhatsapp(e.target.value);
+                      }}
+                    />
+                  </InputLabel>
+            </div>
             <Textarea
               name="bio"
               label="Biografia (Máximo 300 caracteres)"
@@ -167,51 +208,54 @@ const TeacherForm: React.FC = () => {
             {scheduleItems.map((scheduleItem, index) => {
               return (
                 <div key={scheduleItem.week_day} className="schedule-item">
-                 <div className="horarios">
-                  <Select
+                    <div className="horarios">
+                      <Select
 
-                    style={{width: '320px'}}
-                    name="week_day"
-                    label="Dia da semana"
-                    value={scheduleItem.week_day}
-                    onChange={(e) =>
-                      setScheduleItemValue(index, 'week_day', e.target.value)
-                    }
-                    options={[
-                      { value: '0', label: 'Domingo' },
-                      { value: '1', label: 'Segunda-feira' },
-                      { value: '2', label: 'Terça-feira' },
-                      { value: '3', label: 'Quarta-feira' },
-                      { value: '4', label: 'Quinta-feira' },
-                      { value: '5', label: 'Sexta-feira' },
-                      { value: '6', label: 'Sábado' },
-                    ]}
-                  />
-
-                <InputLabel title="Das" name="from" style={{marginLeft: '0'}}>
-                  <input
-                    style={{width: '128px'}}
-                    name="from"
-                    type="time"
-                    value={scheduleItem.from}
-                    onChange={(e) =>
-                      setScheduleItemValue(index, 'from', e.target.value)
-                    }
-                    />
-                </InputLabel>
-
-                  <InputLabel title="Até" name="to" style={{marginLeft: '0'}}>
-                    <input
-                      style={{width: '128px'}}
-                      name="to"
-                      type="time"
-                      value={scheduleItem.to}
-                      onChange={(e) =>
-                        setScheduleItemValue(index, 'to', e.target.value)
-                      }
+                        style={{width: '320px'}}
+                        name="week_day"
+                        label="Dia da semana"
+                        value={scheduleItem.week_day}
+                        onChange={(e) =>
+                          setScheduleItemValue(index, 'week_day', e.target.value)
+                        }
+                        options={[
+                          { value: '0', label: 'Domingo' },
+                          { value: '1', label: 'Segunda-feira' },
+                          { value: '2', label: 'Terça-feira' },
+                          { value: '3', label: 'Quarta-feira' },
+                          { value: '4', label: 'Quinta-feira' },
+                          { value: '5', label: 'Sexta-feira' },
+                          { value: '6', label: 'Sábado' },
+                        ]}
                       />
-                  </InputLabel>
-                </div>
+
+                      <InputLabel title="Das" name="from" style={{marginLeft: '0'}}>
+                        <input
+                          style={{width: '128px'}}
+                          name="from"
+                          type="time"
+                          value={scheduleItem.from}
+                          onChange={(e) =>
+                            setScheduleItemValue(index, 'from', e.target.value)
+                          }
+                          />
+                      </InputLabel>
+
+                      <InputLabel title="Até" name="to" style={{marginLeft: '0'}}>
+                        <input
+                          style={{width: '128px'}}
+                          name="to"
+                          type="time"
+                          value={scheduleItem.to}
+                          onChange={(e) =>
+                            setScheduleItemValue(index, 'to', e.target.value)
+                          }
+                          />
+                      </InputLabel>
+                    </div>
+                    <div className="btn-delete">
+                      <button type="button">Excluir horário</button>
+                    </div>
               </div>
               );
             })}
@@ -232,4 +276,4 @@ const TeacherForm: React.FC = () => {
   );
 };
 
-export default TeacherForm;
+export default Profile;

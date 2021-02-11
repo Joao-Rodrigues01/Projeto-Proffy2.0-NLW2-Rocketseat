@@ -7,11 +7,11 @@ import backIcon from '../../assets/images/icons/back.svg';
 import './styles.css';
 
 interface PageHeaderProps {
-  title: string;
+  title?: string;
   description?: string;
   headerTitle: string;
-  imgIcon: string;
-  imgIconDesc: string;
+  imgIcon?: string;
+  imgIconDesc?: string;
   style?: object;
 }
 
@@ -41,10 +41,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           {children}
         </div>
 
-        <div className="icon-content" style={style}>
+      { imgIcon && <div className="icon-content" style={style}>
           <img src={imgIcon} alt="Icone"/>
           <p>{imgIconDesc}</p>
-        </div>
+        </div>}
       </div>
     </header>
   );

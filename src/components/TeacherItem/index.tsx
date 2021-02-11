@@ -24,8 +24,9 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
     api.post('connections', {
       user_id: teacher.id,
     });
-  }
+  };
 
+  console.log(teacher.avatar);
   return (
     <article className="teacher-item">
       <header>

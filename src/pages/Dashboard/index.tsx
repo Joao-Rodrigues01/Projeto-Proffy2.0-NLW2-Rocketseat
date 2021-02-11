@@ -29,11 +29,13 @@ const Dashboard: React.FC = () => {
       <div id="page-landing">
             <header>
                 <div className="profile-info">
-                  <img
-                    src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png"
-                     alt="Yoda"
-                  />
-                  Thiago Luchenberg
+                  <Link to="/profile">
+                    <img
+                    src="https://avatars.githubusercontent.com/u/61169118?s=460&u=8433bc8b05b820853155e079fdcdaae69000a878&v=4"
+                    alt="Yoda"
+                    />
+                  Jonas Rodrigues
+                </Link>
                 </div>
 
                 <button type="button" onClick={signOut}>

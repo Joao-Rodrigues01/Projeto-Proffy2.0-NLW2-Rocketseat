@@ -9,6 +9,7 @@ import SignUp from '../pages/SignUp';
 import ForgotPassword from '../pages/ForgotPassword';
 import TeacherList from '../pages/TeacherList';
 import TeacherForm from '../pages/TeacherForm';
+import Profile from '../pages/Profile';
 
 const Routes: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Routes: React.FC = () => {
       <Route path="/forgot-password" exact component={ForgotPassword} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate/>
+      <Route path="/profile" component={Profile} isPrivate/>
       <Route path="/study" component={TeacherList} isPrivate/>
       <Route path="/give-classes" component={TeacherForm} isPrivate/>
     </BrowserRouter>
