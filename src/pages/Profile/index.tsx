@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/AuthContext';
 import PageHeader from '../../components/PageHeader';
 import InputLabel from '../../components/InputLabel';
 
+import InputProfile from '../../components/InputProfile';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import Select from '../../components/Select';
 import Textarea from '../../components/Textarea';
@@ -15,20 +16,46 @@ import api from '../../services/api';
 
 import './styles.css';
 
+interface ProfileData {
+  name: string;
+  surname: string;
+  whatsapp: string;
+  email: string;
+  bio: string;
+  subject: string;
+  cost: number;
+    schedule: Array<{
+    week_day: number;
+    from: string;
+    to: string;
+    }>
+}
+
 const Profile: React.FC = () => {
   const history = useHistory();
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const formRef = useRef<FormHandles>(null);
 
-  const [whatsapp, setWhatsapp] = useState('');
-  const [bio, setBio] = useState('');
 
-  const [subject, setSubject] = useState('');
-  const [cost, setCost] = useState('');
+
+  const { name, surname, email, whatsapp, bio, subject , cost, schedule} = user;
+// Fazer schedule com array e validar no login se ele possui class ou nao
+
+  const userData = {
+    name,
+    surname,
+    email,
+    whatsapp,
+    bio,
+    subject,
+    cost,
+    schedule
+  }
 
   const [scheduleItems, setScheduleItems] = useState([
     { week_day: 0, from: '', to: '' },
   ]);
+
 
   function addNewScheduleItem() {
     setScheduleItems([...scheduleItems, { week_day: 0, from: '', to: '' }]);
@@ -49,26 +76,17 @@ const Profile: React.FC = () => {
     setScheduleItems(updateScheduleItems);
   }
 
- const handleCreateClass = useCallback(async (data: FormEvent) =>{
+ const handleUpdateProfile = useCallback(async (data: ProfileData) =>{
+  try {
 
-   await api
-      .post(`/classes/${user.id}`, {
-        whatsapp,
-        bio,
-        subject,
-        cost: Number(cost),
-        schedule: scheduleItems,
-      })
-      .then(() => {
-        alert('Cadastro realizado com suceso!');
-        history.push('/dashboard');
-      })
-      .catch((err) => {
-        alert('Erro no cadasto!');
-        console.log(err);
-      });
+    const response  = await api.put(`/profile/${user.id}`, data);
 
-  }, [whatsapp, bio, subject, cost, scheduleItems, history, user.id]);
+    updateUser(response.data);
+  } catch (err) {
+    console.log(err);
+  }
+
+  }, [updateUser]);
 
 
   return (
@@ -76,47 +94,39 @@ const Profile: React.FC = () => {
       <PageHeader headerTitle="Meu perfil">
           <header>
             <div className="profile-img">
-                <img src="https://avatars.githubusercontent.com/u/61169118?s=460&u=8433bc8b05b820853155e079fdcdaae69000a878&v=4"
-                    alt="João"
+                <img src={user.avatar}
+                    alt={user.name}
                 />
                   <div className="cam-icon">
                     <FiCamera size={24} color="#fff" />
                   </div>
-                <h1>João Rodrigues</h1>
+                <h1>{`${user.name} ${user.surname}`}</h1>
                 <p>Matemática</p>
               </div>
           </header>
       </PageHeader>
 
       <main>
-        <Form  ref={formRef} onSubmit={handleCreateClass}>
+        <Form  initialData={userData} ref={formRef} onSubmit={handleUpdateProfile}>
           <fieldset>
             <legend>Seus dados</legend>
 
             <div className="user-info">
 
                <InputLabel title="Nome" name="name">
-                  <input
+                  <InputProfile
                     style={{width: '288px'}}
                     name="name"
-                    placeholder="Jonas"
-                    value={whatsapp}
-                    onChange={(e) => {
-                    setWhatsapp(e.target.value);
-                    }}
+
                     />
                 </InputLabel>
 
 
                 <InputLabel title="Sobrenome" name="surname">
-                  <input
+                  <InputProfile
                     style={{width: '288px'}}
                     name="surname"
-                    placeholder="Rodrigues"
-                    value={whatsapp}
-                    onChange={(e) => {
-                    setWhatsapp(e.target.value);
-                    }}
+
                     />
                 </InputLabel>
 
@@ -124,37 +134,22 @@ const Profile: React.FC = () => {
 
             <div className="user-info">
                   <InputLabel title="E-mail" name="email">
-                    <input
+                    <InputProfile
                       style={{width: '364px'}}
                       name="email"
-                      placeholder="jonas.victir@gmail.com"
-                      value={whatsapp}
-                      onChange={(e) => {
-                      setWhatsapp(e.target.value);
-                      }}
                       />
                   </InputLabel>
 
-
                   <InputLabel title="Whatsapp" name="whatsapp">
-                    <input
+                    <InputProfile
                       style={{width: '186px'}}
                       name="whatsapp"
-                      placeholder="(   ) _ ____ ____"
-                      value={whatsapp}
-                      onChange={(e) => {
-                      setWhatsapp(e.target.value);
-                      }}
                     />
                   </InputLabel>
             </div>
             <Textarea
               name="bio"
               label="Biografia (Máximo 300 caracteres)"
-              value={bio}
-              onChange={(e) => {
-                setBio(e.target.value);
-              }}
             />
           </fieldset>
 
@@ -166,10 +161,6 @@ const Profile: React.FC = () => {
               style={{width: '383px'}}
               name="subject"
               label="Matéria"
-              value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-              }}
               options={[
                 { value: 'Artes', label: 'Artes' },
                 { value: 'Biologia', label: 'Biologia' },
@@ -185,14 +176,10 @@ const Profile: React.FC = () => {
               ]}
             />
               <InputLabel title="Custo da sua hora / aula" name="cost">
-                  <input
+                  <InputProfile
                     style={{width: '192px'}}
                     name="cost"
                     placeholder="R$"
-                    value={cost}
-                    onChange={(e) => {
-                      setCost(e.target.value);
-                    }}
                     />
               </InputLabel>
           </fieldset>
@@ -210,14 +197,10 @@ const Profile: React.FC = () => {
                 <div key={scheduleItem.week_day} className="schedule-item">
                     <div className="horarios">
                       <Select
-
                         style={{width: '320px'}}
                         name="week_day"
                         label="Dia da semana"
                         value={scheduleItem.week_day}
-                        onChange={(e) =>
-                          setScheduleItemValue(index, 'week_day', e.target.value)
-                        }
                         options={[
                           { value: '0', label: 'Domingo' },
                           { value: '1', label: 'Segunda-feira' },
@@ -230,26 +213,21 @@ const Profile: React.FC = () => {
                       />
 
                       <InputLabel title="Das" name="from" style={{marginLeft: '0'}}>
-                        <input
+                        <InputProfile
                           style={{width: '128px'}}
                           name="from"
                           type="time"
-                          value={scheduleItem.from}
-                          onChange={(e) =>
-                            setScheduleItemValue(index, 'from', e.target.value)
-                          }
+                          // value={scheduleItem.from}
+
                           />
                       </InputLabel>
 
                       <InputLabel title="Até" name="to" style={{marginLeft: '0'}}>
-                        <input
+                        <InputProfile
                           style={{width: '128px'}}
                           name="to"
                           type="time"
-                          value={scheduleItem.to}
-                          onChange={(e) =>
-                            setScheduleItemValue(index, 'to', e.target.value)
-                          }
+                          // value={scheduleItem.to}
                           />
                       </InputLabel>
                     </div>

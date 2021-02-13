@@ -15,7 +15,7 @@ import { useAuth } from '../../hooks/AuthContext';
 
 const Dashboard: React.FC = () => {
   const [totalConnections, setTotalConnections] = useState(0);
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   useEffect(() => {
     api.get('connections').then((response: any) => {
@@ -31,10 +31,10 @@ const Dashboard: React.FC = () => {
                 <div className="profile-info">
                   <Link to="/profile">
                     <img
-                    src="https://avatars.githubusercontent.com/u/61169118?s=460&u=8433bc8b05b820853155e079fdcdaae69000a878&v=4"
-                    alt="Yoda"
+                    src={user.avatar}
+                    alt={user.name}
                     />
-                  Jonas Rodrigues
+                 {`${user.name} ${user.surname}`}
                 </Link>
                 </div>
 

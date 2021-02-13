@@ -107,7 +107,6 @@ const searchTeachers = useCallback(async (data: FormEvent) => {
               />
           </InputLabel>
 
-          <button type="submit">Vai</button>
         </Form>
       </PageHeader>
 

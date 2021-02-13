@@ -10,7 +10,7 @@ interface InputLabelProps {
 
 const InputLabel: React.FC<InputLabelProps> = ({title, name, style,children}) => {
   return (
-    <div id="input-label" style={style}>
+    <div id="input-label" style={style} >
       <label htmlFor={name}>{title}</label>
       {children}
     </div>

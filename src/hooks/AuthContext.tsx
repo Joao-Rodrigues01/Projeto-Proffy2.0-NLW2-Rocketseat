@@ -9,6 +9,15 @@ interface User {
   surname: string;
   email: string;
   avatar: string;
+  whatsapp: string;
+  bio: string;
+  subject: string;
+  cost: string;
+  schedule: Array<{
+    week_day: number;
+    from: string;
+    to: string;
+    }>
 }
 
 interface AuthState {
@@ -26,6 +35,7 @@ interface AuthContextData {
   signIn(credentials: SignInCredentials): Promise<void>;
   signInChecked(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  updateUser(user: User): void;
   token: string;
 }
 
@@ -58,6 +68,7 @@ const AuthProvider: React.FC = ({children}) => {
 
     const { token, user } = response.data;
 
+
     sessionStorage.setItem('@Proffy:token', token);
     sessionStorage.setItem('@Proffy:user', JSON.stringify(user));
 
@@ -88,6 +99,20 @@ const AuthProvider: React.FC = ({children}) => {
     setData({} as AuthState);
   }, []);
 
+
+  const updateUser = useCallback(
+    (user: User) => {
+      localStorage.setItem('@Gobarber:user', JSON.stringify(user));
+      sessionStorage.setItem('@Gobarber:user', JSON.stringify(user));
+
+      setData({
+        token: data.token,
+        user,
+      });
+    },
+    [setData, data.token],
+  );
+
   return (
     <AuthContext.Provider value={{
       user: data.user,
@@ -95,6 +120,7 @@ const AuthProvider: React.FC = ({children}) => {
       signIn,
       signInChecked,
       signOut,
+      updateUser
     }}>
       {children}
     </AuthContext.Provider>

@@ -87,10 +87,10 @@ const TeacherForm: React.FC = () => {
             <legend>Seus dados</legend>
 
             <div className="user-info">
-              <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/07499b3d-5e5e-4366-b6b9-3ea09fc19ecd-profile_image-70x70.png"
-                  alt="Yoda"
+              <img src={user.avatar}
+                  alt={user.name}
                 />
-              <p>Tiago Luchenberg</p>
+              <p>{`${user.name} ${user.surname}`}</p>
 
 
                 <InputLabel title="Whatsapp" name="whatsapp">
